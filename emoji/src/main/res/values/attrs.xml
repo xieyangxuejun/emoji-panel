@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmojiChildLayout">
+        <attr name="num_column" format="integer"/>
+        <attr name="num_row" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_marginTop="45dp"
+        android:textSize="14dp"
+        android:text="123[001-embarrassed-4]==[002-sad-14]==[010-favorite][013-liar]"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.foretree.support.emoji.EmojiLayout
+        android:id="@+id/emoji_layout"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_height="320dp" />
+
+</RelativeLayout>
