@@ -3,5 +3,6 @@
     <declare-styleable name="EmojiChildLayout">
         <attr name="num_column" format="integer"/>
         <attr name="num_row" format="integer"/>
+        <attr name="icon_delete" format="reference"/>
     </declare-styleable>
 </resources>

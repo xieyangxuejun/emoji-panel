@@ -15,7 +15,7 @@
         android:id="@+id/tv_text"
         android:layout_marginTop="45dp"
         android:textSize="14dp"
-        android:text="123[001-embarrassed-4]==[002-sad-14]==[010-favorite][013-liar]"
+        android:text="0x1f603 123[001-embarrassed-4]==[002-sad-14]==[010-favorite][013-liar]"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

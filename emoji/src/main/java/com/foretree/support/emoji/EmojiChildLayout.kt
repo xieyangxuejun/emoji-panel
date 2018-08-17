@@ -5,12 +5,11 @@ import android.graphics.Color
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import com.foretree.support.emoji.adapter.EmojiImageAdapter
+import com.foretree.support.emoji.adapter.EmojiTextAdapter
 import kotlinx.android.synthetic.main.emoji_layout_child_viewpager.view.*
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 
@@ -22,7 +21,8 @@ import net.lucode.hackware.magicindicator.ViewPagerHelper
 class EmojiChildLayout : LinearLayout {
     private var numRow = 7
     private var numColumn = 3
-    private val emojiList = arrayListOf<String>()
+    private var iconDeleteResId = 0
+    private val emojiList = arrayListOf<EmojiEntity>()
     private var onChooseEmojiCallback: OnEmojiChooseCallback? = null
 
 
@@ -33,6 +33,7 @@ class EmojiChildLayout : LinearLayout {
         val array = context.obtainStyledAttributes(attr, R.styleable.EmojiChildLayout)
         val row = array.getInteger(R.styleable.EmojiChildLayout_num_row, 0)
         val column = array.getInteger(R.styleable.EmojiChildLayout_num_column, 0)
+        iconDeleteResId = array.getResourceId(R.styleable.EmojiChildLayout_icon_delete, R.drawable.delete)
         if (row != 0) numRow = row
         if (column != 0) numColumn = column
         array.recycle()
@@ -48,7 +49,7 @@ class EmojiChildLayout : LinearLayout {
     /**
      * 设置一套表情数据
      */
-    fun setEmojiIcons(emojis: List<String>) {
+    fun setEmojiIcons(emojis: List<EmojiEntity>) {
         val onePageCount = (numRow * numColumn) - 1
         var pageCount = emojis.size / onePageCount
         if (emojis.size % onePageCount != 0) pageCount++
@@ -70,23 +71,24 @@ class EmojiChildLayout : LinearLayout {
         for (page in 1..pageCount) {
             val start = Math.min(Math.max(onePageCount * (page - 1), 0), emojiList.size)
             val end = Math.min(Math.max(onePageCount * (page), start), emojiList.size)
-            pageViews.add(getChildGridView(arrayListOf<String>().apply {
+            pageViews.add(getChildGridView(arrayListOf<EmojiEntity>().apply {
                 addAll(emojiList.subList(start, end))
-                add("delete")
+                add(EmojiEntity(Type.Drawable, "png", "delete", iconDeleteResId, ""))
             }))
         }
         vp_child_emoji.adapter = EmojiPageAdapter(pageViews)
     }
 
-    private fun getChildGridView(list: List<String>): View {
+    private fun getChildGridView(list: List<EmojiEntity>): View {
         return RelativeLayout(context).apply {
             layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
             gravity = Gravity.CENTER
             addView(RecyclerView(context).apply {
                 overScrollMode = View.OVER_SCROLL_NEVER
-                layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (getMetricsWidth(context).toFloat() / 7 * 3).toInt())
+                val itemHeight = getMetricsWidth(context).toFloat() / numRow
+                layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (itemHeight * numColumn).toInt())
                 layoutManager = GridLayoutManager(context, numRow)
-                adapter = EmojiImageAdapter().apply {
+                adapter = EmojiTextAdapter(itemHeight.toInt()).apply {
                     submitList(list)
                     setOnItemClickListener { adapter, view, position ->
                         if (onChooseEmojiCallback == null) return@setOnItemClickListener
@@ -118,7 +120,7 @@ class EmojiChildLayout : LinearLayout {
     }
 
     interface OnEmojiChooseCallback {
-        fun onChooseEmoji(name: String)
+        fun onChooseEmoji(entity: EmojiEntity)
         fun onDeleteEmoji()
     }
 }
