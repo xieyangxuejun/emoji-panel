@@ -1,4 +1,6 @@
 # emoji-panel
 表情面板
 
-![](../art/shortcut.jpg)
+# show shortcut
+
+![shortcut](art\shortcut.png)
