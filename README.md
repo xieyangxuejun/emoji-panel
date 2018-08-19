@@ -3,4 +3,4 @@
 
 # show shortcut
 
-![shortcut](art\shortcut.png)
+![shortcut](./art/shortcut.png)
