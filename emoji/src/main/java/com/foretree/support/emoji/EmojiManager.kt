@@ -11,6 +11,7 @@ import android.text.SpannableStringBuilder
 import android.text.TextUtils
 import android.text.style.DynamicDrawableSpan
 import android.text.style.ImageSpan
+import android.view.KeyEvent
 import android.widget.EditText
 import android.widget.TextView
 import java.io.File
@@ -177,7 +178,11 @@ class EmojiManager {
                     else
                         editText.editableText.delete(selectionStart - 1, selectionStart)
                 } else {
-                    editText.editableText.delete(selectionStart - 1, selectionStart)
+                    //editText.editableText.delete(selectionStart - 1, selectionStart)
+                    editText.dispatchKeyEvent(KeyEvent(0,0,0,
+                            KeyEvent.KEYCODE_DEL,
+                            0,0,0,0,
+                            KeyEvent.KEYCODE_ENDCALL))
                 }
             }
         }
