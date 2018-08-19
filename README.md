@@ -1,8 +1,6 @@
 # emoji-panel
 
-```
-[![](https://jitpack.io/v/xieyangxuejun/emoji-panel.svg)](https://jitpack.io/#xieyangxuejun/emoji-panel)
-```
+# [![](https://jitpack.io/v/xieyangxuejun/emoji-panel.svg)](https://jitpack.io/#xieyangxuejun/emoji-panel)
 
 表情面板
 
