@@ -1,5 +1,6 @@
 package com.foretree.support.emoji
 
+import android.content.res.Resources
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -31,6 +32,33 @@ object EmojiUtils {
             val drawable = EmojiManager.getInstance().getEmojiDrawable(tv.resources, emojiEntity)
                     ?: continue
             val textSize = tv.textSize.toInt()
+            drawable.setBounds(0, 0, textSize, textSize)
+            val imageSpan = ImageSpan(drawable, DynamicDrawableSpan.ALIGN_BOTTOM)
+            val ss = SpannableString(entity.value)
+            ss.setSpan(imageSpan, 0, ss.length, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+            //插入需要将以前的字符移除
+            ssb.delete(entity.start, entity.end)
+            ssb.insert(entity.start, ss)
+        }
+        return ssb
+    }
+
+    @JvmStatic
+    fun replaceEmoji(resources: Resources, content: CharSequence): Spannable {
+        val emojiEntities = arrayListOf<RegEntity>()
+        Pattern.compile(regx).matcher(content).run {
+            while (this.find()) {
+                emojiEntities.add(RegEntity(this.start(), this.end(), this.group()))
+            }
+        }
+
+        val ssb = SpannableStringBuilder(content)
+        for (entity in emojiEntities) {
+            val emojiEntity = EmojiManager.getInstance().getEmojiEntity(entity.value) ?: continue
+            val drawable = EmojiManager.getInstance().getEmojiDrawable(resources, emojiEntity)
+                    ?: continue
+            val textSize = content.length
             drawable.setBounds(0, 0, textSize, textSize)
             val imageSpan = ImageSpan(drawable, DynamicDrawableSpan.ALIGN_BOTTOM)
             val ss = SpannableString(entity.value)
