@@ -39,8 +39,7 @@ object EmojiUtils {
             val emojiEntity = EmojiManager.getInstance().getEmojiEntity(entity.value) ?: continue
             val drawable = EmojiManager.getInstance().getEmojiDrawable(resources, emojiEntity)
                     ?: continue
-            val textSize = content.length
-            drawable.setBounds(0, 0, textSize, textSize)
+            drawable.setBounds(0, 0, width, height)
             val imageSpan = ImageSpan(drawable, DynamicDrawableSpan.ALIGN_BOTTOM)
             val ss = SpannableString(entity.value)
             ss.setSpan(imageSpan, 0, ss.length, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
