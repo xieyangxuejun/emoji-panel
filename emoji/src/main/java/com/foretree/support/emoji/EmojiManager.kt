@@ -202,7 +202,7 @@ class EmojiManager {
     /**
      * get emoji entity
      */
-    private fun getEmojiEntity(name: String): EmojiEntity? {
+    public fun getEmojiEntity(name: String): EmojiEntity? {
         emojiPackageMap.forEach {
             if (it.value.containsKey(name)) {
                 return it.value[name]
