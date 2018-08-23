@@ -24,8 +24,14 @@ class EmojiChildLayout : LinearLayout {
     private var iconDeleteResId = 0
     private val emojiList = arrayListOf<EmojiEntity>()
     private var onChooseEmojiCallback: OnEmojiChooseCallback? = null
+    private var parentWidth = 0
+    private var parentHeight = 0
 
-
+    constructor(context: Context, parentWidth: Int, parentHeight: Int, backgroundColor: Int) : this(context) {
+        this.parentWidth = parentWidth
+        this.parentHeight = parentHeight
+        setBackgroundColor(backgroundColor)
+    }
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attr: AttributeSet?) : this(context, attr, 0)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int) : super(context, attr, defStyle) {
@@ -85,9 +91,11 @@ class EmojiChildLayout : LinearLayout {
             gravity = Gravity.CENTER
             addView(RecyclerView(context).apply {
                 overScrollMode = View.OVER_SCROLL_NEVER
-                val itemHeight = getMetricsWidth(context).toFloat() / numRow
+                val layoutHeight = if (parentHeight == 0) getMetricsWidth(context) else parentHeight
+                val itemHeight = layoutHeight.toFloat() / numColumn
                 layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (itemHeight * numColumn).toInt())
                 layoutManager = GridLayoutManager(context, numRow)
+                //表情adapter
                 adapter = EmojiTextAdapter(itemHeight.toInt()).apply {
                     submitList(list)
                     setOnItemClickListener { adapter, view, position ->
@@ -105,9 +113,14 @@ class EmojiChildLayout : LinearLayout {
         }
     }
 
-    private fun initIndicator(size: Int) {
+    private fun initIndicator(pageCount: Int) {
+        if (pageCount <= 1) {
+            indicator_child_emoji.visibility = View.GONE
+            return
+        }  //单页不显示指示器
+        indicator_child_emoji.visibility = View.VISIBLE
         indicator_child_emoji.navigator = ScaleCircleNavigator(context).apply {
-            setCircleCount(size)
+            setCircleCount(pageCount)
             setNormalCircleColor(Color.LTGRAY)
             setSelectedCircleColor(Color.BLACK)
             setCircleClickListener(object : ScaleCircleNavigator.OnCircleClickListener {

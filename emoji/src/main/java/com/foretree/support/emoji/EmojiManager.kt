@@ -47,7 +47,7 @@ class EmojiManager {
      * 导入zip
      */
     fun loadZip(filePath: String, outDir: String) {
-        FileUtils.unzipDir(filePath, outDir)
+        Utils.unzipDir(filePath, outDir)
     }
 
     /**
@@ -59,7 +59,7 @@ class EmojiManager {
             val fileNmae = it.substring(0, it.lastIndexOf('.'))
             val resource = dirName + File.separator + it
             if ("emoji_cover" == fileNmae) {
-                emojiCoverList.add(CoverEntity(false, fileNmae, resource))
+                emojiCoverList.add(CoverEntity(Type.Asset, false, fileNmae, resource))
             } else {
                 val key = "[$fileNmae]"
                 childMap[key] = EmojiEntity(Type.Asset, "png", key, resource, dirName)
@@ -68,7 +68,14 @@ class EmojiManager {
         putAll(dirName, childMap)
     }
 
-    private fun putAll(key: String, childMap: LinkedHashMap<String, EmojiEntity>) {
+    /**
+     * 添加封面
+     */
+    fun putEmojiCover(type: Type, isChecked: Boolean, fileName: String, res: String) {
+        emojiCoverList.add(CoverEntity(type, isChecked, fileName, res))
+    }
+
+    fun putAll(key: String, childMap: LinkedHashMap<String, EmojiEntity>) {
         val getMap = emojiPackageMap.get(key)
         if (getMap == null) {
             emojiPackageMap[key] = childMap
@@ -78,7 +85,7 @@ class EmojiManager {
     }
 
     fun loadSystem(type: Type, coverPath: String) {
-        loadSystem("system", type, coverPath, *EmojiData.DEFAULT)
+        loadSystem("system", Type.System, coverPath, *EmojiData.DEFAULT)
     }
 
     fun loadSystem(parentKey: String, type: Type, coverPath: String, vararg intArray: Int) {
@@ -88,7 +95,7 @@ class EmojiManager {
             childMap[key] = EmojiEntity(Type.System, "", key, "", parentKey)
         }
         putAll(parentKey, childMap)
-        emojiCoverList.add(CoverEntity(true, "默认", coverPath, type))
+        emojiCoverList.add(CoverEntity(type, true, "系统", coverPath))
     }
 
     /**

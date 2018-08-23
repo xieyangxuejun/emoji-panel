@@ -1,16 +1,16 @@
 package com.foretree.support.emoji
 
+import android.content.Context
 import android.os.Environment
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import java.io.*
+import java.nio.charset.Charset
 import java.util.zip.ZipInputStream
 
 
 /**
  * Created by silen on 15/08/2018
  */
-object FileUtils {
+object Utils {
 
     /*
      * 解压缩目录
@@ -44,5 +44,39 @@ object FileUtils {
             zis.closeEntry()
             zis.close()
         }
+    }
+
+    fun readAssetFile(context: Context, fileName: String, encoding: Charset): String {
+        var resultString = ""
+        var `is`: InputStream? = null
+        try {
+            `is` = context.assets.open(fileName)
+            val buffer = ByteArray(`is`!!.available())
+
+            `is`.read(buffer)
+            resultString = String(buffer, encoding)
+        } catch (e1: Exception) {
+            e1.printStackTrace()
+
+            try {
+                if (`is` != null) {
+                    `is`.close()
+                }
+            } catch (e2: IOException) {
+                e2.printStackTrace()
+            }
+
+        } finally {
+            try {
+                if (`is` != null) {
+                    `is`.close()
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+        }
+
+        return resultString
     }
 }

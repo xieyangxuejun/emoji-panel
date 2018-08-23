@@ -1,0 +1,151 @@
+{
+    "id": "com.digizen.star.default",
+    "version": 1,
+    "group_name_tw": "默認",
+    "group_name_cn": "默认",
+    "group_name_en": "Default",
+    "display_only": 0,
+    "group_type": 0,
+    "emoticons": [
+                  {
+                  "chs": "[微笑]",
+                  "cht": "[微笑]",
+                  "gif": "",
+                  "png": "b_weixiao.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[嘻嘻]",
+                  "cht": "[嘻嘻]",
+                  "gif": "",
+                  "png": "b_xixi.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[笑cry]",
+                  "cht": "[笑cry]",
+                  "gif": "",
+                  "png": "b_xiaocry.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[调皮]",
+                  "cht": "[調皮]",
+                  "gif": "",
+                  "png": "b_tiaopi.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[帅气]",
+                  "cht": "[帥氣]",
+                  "gif": "",
+                  "png": "b_shuaiqi.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[色]",
+                  "cht": "[色]",
+                  "gif": "",
+                  "png": "b_se.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[害羞]",
+                  "cht": "[害羞]",
+                  "gif": "",
+                  "png": "b_haixiu.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[捂脸]",
+                  "cht": "[捂臉]",
+                  "gif": "",
+                  "png": "b_wulian.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[哭泣]",
+                  "cht": "[哭泣]",
+                  "gif": "",
+                  "png": "b_kuqi.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[疑问]",
+                  "cht": "[疑問]",
+                  "gif": "",
+                  "png": "b_yiwen.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[汗]",
+                  "cht": "[汗]",
+                  "gif": "",
+                  "png": "b_han.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[惊讶]",
+                  "cht": "[驚訝]",
+                  "gif": "",
+                  "png": "b_jingya.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[无奈]",
+                  "cht": "[無奈]",
+                  "gif": "",
+                  "png": "b_wunai.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[生气]",
+                  "cht": "[生氣]",
+                  "gif": "",
+                  "png": "b_shengqi.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[加油]",
+                  "cht": "[加油]",
+                  "gif": "",
+                  "png": "b_jiayou.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[鼓掌]",
+                  "cht": "[鼓掌]",
+                  "gif": "",
+                  "png": "b_guzhang.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[赞]",
+                  "cht": "[贊]",
+                  "gif": "",
+                  "png": "b_zan.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[耶]",
+                  "cht": "[耶]",
+                  "gif": "",
+                  "png": "b_ye.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[爱心]",
+                  "cht": "[愛心]",
+                  "gif": "",
+                  "png": "l_aixin.png",
+                  "type": "0"
+                  },
+                  {
+                  "chs": "[蛋糕]",
+                  "cht": "[蛋糕]",
+                  "gif": "",
+                  "png": "o_dangao.png",
+                  "type": "0"
+                  }
+                  ]
+}

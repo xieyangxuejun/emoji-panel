@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="EmojiLayout">
+        <attr name="android:layout_height" format="dimension"/>
+        <attr name="android:layout_width" format="dimension"/>
+        <attr name="android:background" format="color"/>
+    </declare-styleable>
     <declare-styleable name="EmojiChildLayout">
         <attr name="num_column" format="integer"/>
         <attr name="num_row" format="integer"/>

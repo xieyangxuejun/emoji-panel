@@ -19,8 +19,8 @@ data class EmojiEntity(
 
 //封面
 data class CoverEntity(
+        val type: Type = Type.Asset,
         var checked: Boolean,
         val msg: String,
-        val res: String,
-        val type: Type = Type.Asset
+        val res: String
 )

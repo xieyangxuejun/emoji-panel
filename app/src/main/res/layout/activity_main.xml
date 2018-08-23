@@ -21,9 +21,11 @@
 
     <com.foretree.support.emoji.EmojiLayout
         android:id="@+id/emoji_layout"
+        android:background="#abc"
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
+        android:padding="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_height="320dp" />
+        android:layout_height="220dp" />
 
 </RelativeLayout>
