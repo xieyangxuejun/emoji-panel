@@ -31,3 +31,6 @@ dependencies {
 }
 ```
 
+# About me
+
+I was been Junior Chemist after graduation from college, working in pharmaceutical company.Now, I has been a Android developer, I love google, I love chemistry and programming. You have a idea or wanna be friend with me.**Please contacts my email **: [xieyangxuejun@gmail.com](mailto:xieyangxuejun@gmail.com).
